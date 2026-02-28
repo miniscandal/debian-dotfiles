@@ -1,0 +1,11 @@
+(@(& 'C:/Users/histo/AppData/Local/Programs/oh-my-posh/bin/oh-my-posh.exe' init pwsh --config='C:\Users\histo\AppData\Local\Programs\oh-my-posh\themes\M365Princess.omp.json' --print) -join "`n") | Invoke-Expression
+
+
+$ompPath = "$env:LOCALAPPDATA\Programs\oh-my-posh\bin\oh-my-posh.exe"
+$configPath = "$env:LOCALAPPDATA\Programs\oh-my-posh\themes\M365Princess.omp.json"
+
+& $ompPath init pwsh --config $configPath | Invoke-Expression
+
+
+$THEME_PATH = "$env:LOCALAPPDATA\Programs\oh-my-posh\themes\M365Princess.omp.json"
+oh-my-posh init pwsh --config $THEME_PATH  | Invoke-Expression

@@ -1,0 +1,9 @@
+wsl --shutdown
+
+chsh -s $(which fish)
+chsh -s $(which bash)
+
+
+$env:PATH -split ';' | Sort-Object
+[Environment]::GetEnvironmentVariable("Path", "Machine") -split ';'
+[Environment]::GetEnvironmentVariable("Path", "User") -split ';'

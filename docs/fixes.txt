@@ -1,0 +1,4 @@
+Extension: shell-format
+
+Error: There is no formatter for 'shell script' files installed
+https://stackoverflow.com/questions/67710479/how-do-i-change-the-format-options-for-shell-format-vs-code-extension
