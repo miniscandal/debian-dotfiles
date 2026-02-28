@@ -1,0 +1,3 @@
+# Arrows up/down search the history based on the already typed text
+"\e[A": history-search-backward
+"\e[B": history-search-forward
