@@ -1,3 +1,10 @@
+$OS_RELEASE = if ($IsLinux) { 
+    $env:PSModulePath += ":/mnt/c/Users/histo/OneDrive/Documents/PowerShell/Modules"
+    (Get-Content /etc/os-release | Select-String "PRETTY_NAME=" | Select-Object -First 1).ToString().Split('=')[1].Replace('"', '')
+} elseif ($IsWindows) {
+    (Get-CimInstance Win32_OperatingSystem).Caption
+}
+
 $THEME_PATH = Join-Path $PSScriptRoot "..\assets\oh-my-posh\themes\catppuccin.omp.json"
 oh-my-posh init pwsh --config $THEME_PATH | Invoke-Expression
 
@@ -11,6 +18,8 @@ foreach ($char in $MESSAGE.ToCharArray()) {
     Start-Sleep -Milliseconds 50
 }
 Write-Host ""
+
+Write-Host "> User: $($env:USER ?? $env:USERNAME) | OS Release: $OS_RELEASE ☾`n"
 
 $MESSAGE_SECONDARY = "> No Anime No Life ꉂ(˵˃ ᗜ ˂˵) - No Code No Life ＼_ﾍ(ω｀●)`n`n"
 Write-Host $MESSAGE_SECONDARY
