@@ -1,0 +1,46 @@
+# Lista de dependencias necesarias
+DEPENDENCIES=("glow" "batcat" "ollama")
+
+for cmd in "${DEPENDENCIES[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        echo "❌ Error: '$cmd' no está instalado." >&2
+        
+        # Sugerencia de instalación rápida
+        [[ "$cmd" == "batcat" ]] && echo "💡 Instálalo con: sudo apt install bat"
+        [[ "$cmd" == "glow" ]] && echo "💡 Instálalo con: go install github.com/charmbracelet/glow@latest"
+        
+        exit 1
+    fi
+done
+
+
+
+
+
+1. Validación "Fail-Fast"
+Pon esto al inicio de tu script. Si falla, el script muere ahí mismo con el código de error 1.
+
+Bash
+# Requisitos técnicos
+command -v glow >/dev/null 2>&1 || { echo "Error: glow not found." >&2; exit 1; }
+command -v batcat >/dev/null 2>&1 || { echo "Error: batcat not found." >&2; exit 1; }
+2. El script optimizado
+Ahora que garantizamos que los binarios existen, capturamos la respuesta en una variable para evitar el triple "hit" a Ollama.
+
+Bash
+# Captura técnica de la respuesta
+response=$(ollama run "$MODEL" "$final_prompt")
+
+case "$FORMAT" in
+    glow)
+        echo "$response" | glow -
+        ;;
+    bat)
+        # --style=plain para evitar ruido visual, -l md para parsear el Markdown de la IA
+        echo "$response" | batcat --style=plain -l md --paging=never
+        ;;
+    *)
+        # Salida estándar si no hay formato definido
+        echo "$response"
+        ;;
+esac

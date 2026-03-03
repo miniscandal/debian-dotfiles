@@ -1,0 +1,1 @@
+FORMAT="plain_"; [[ "$FORMAT" == "plain" ]] && echo "Es plano" || echo "Es Markdown"
