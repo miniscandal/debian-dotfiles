@@ -1,15 +1,23 @@
 {
     "cSpell.words": [
+        "advfirewall",
         "ascii",
+        "batcat",
         "catimg",
         "catppuccin",
         "chsh",
         "dango",
         "figlet",
         "histo",
+        "ifeye",
         "linux",
         "LOCALAPPDATA",
         "miniscandal",
+        "netsh",
+        "ollama",
+        "Ollama",
+        "OLLAMA",
+        "pkill",
         "shfmt",
         "shuf"
     ]
