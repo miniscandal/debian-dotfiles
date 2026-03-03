@@ -1,9 +1,37 @@
+WSL Debian
+
 wsl --shutdown
 
 chsh -s $(which fish)
-chsh -s $(which bash)
+chsh -s $(which bash) 
+
+
+wget https://github.com/PowerShell/PowerShell/releases/download/v7.5.4/powershell-7.5.4-linux-x64.tar.gz
+sudo mkdir -p /opt/microsoft/powershell/7
+sudo tar -xvf powershell-7.5.4-linux-x64.tar.gz -C /opt/microsoft/powershell/7
+sudo chmod +x /opt/microsoft/powershell/7/pwsh
+sudo ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+pwsh --version
+
+chmod +x ask.sh
+
+https://ohmyposh.dev/
+https://github.com/eza-community/eza/tree/main
+
+sudo apt install wget
+sudo apt install shfmt
+sudo apt install fish
+
+
+sudo apt install jq
+
+
+
+PowerShell Run as administrator
 
 
 $env:PATH -split ';' | Sort-Object
 [Environment]::GetEnvironmentVariable("Path", "Machine") -split ';'
 [Environment]::GetEnvironmentVariable("Path", "User") -split ';'
+
+netsh advfirewall reset
