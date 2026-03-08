@@ -39,22 +39,16 @@ export PATH="$PATH:$HOME/.local/bin"
 THEME_FILE=~/miniscandal/profile/src/assets/oh-my-posh/themes/catppuccin.omp.json
 eval "$(oh-my-posh init bash --config $THEME_FILE)"
 
+export OLLAMA_HOST=$(ip route show default | awk '{print $3}'):11434
+
 # Aliases
 if command -v eza > /dev/null 2>&1; then
   alias ls='eza --icons --group-directories-first'
 
-  alias scb='xclip -selection clipboard'
-
   # alias tree='eza --tree --icons --level=2'
-
-  tree() {
-    if [[ "$1" == "-m" ]]; then
-      shift
-      LC_ALL=C eza --tree --color=never --level=2 "$@"
-    else
-      eza --tree --icons --level=2 "$@"
-    fi
-  }
+  source "$HOME/miniscandal/profile/src/bash/scripts/functions/tree.sh"
 fi
 
-export OLLAMA_HOST=$(ip route show default | awk '{print $3}'):11434
+alias scb='xclip -selection clipboard'
+alias ask="~/miniscandal/projects/ollama-scripts/src/ask/main.sh"
+alias render="~/miniscandal/projects/ollama-scripts/src/lib/render.pl"
