@@ -1,7 +1,8 @@
 $OS_RELEASE = if ($IsLinux) { 
     $env:PSModulePath += ":/mnt/c/Users/histo/OneDrive/Documents/PowerShell/Modules"
     (Get-Content /etc/os-release | Select-String "PRETTY_NAME=" | Select-Object -First 1).ToString().Split('=')[1].Replace('"', '')
-} elseif ($IsWindows) {
+}
+elseif ($IsWindows) {
     (Get-CimInstance Win32_OperatingSystem).Caption
 }
 
@@ -56,3 +57,12 @@ $ASCII_TEXT = @'
 '@
 
 Write-Host ($ASCII_TEXT + "`n") -ForegroundColor Yellow
+
+
+# Aliases
+if (Get-Command eza -ErrorAction SilentlyContinue) {    
+    function ls { eza --icons --group-directories-first $args }
+
+    . "\\wsl$\Debian\home\ifeye\miniscandal\profile\src\powershell\functions\\tree.ps1"
+    Set-Alias -Name tree -Value Get-Tree
+}

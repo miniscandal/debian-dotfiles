@@ -46,9 +46,10 @@ if command -v eza > /dev/null 2>&1; then
   alias ls='eza --icons --group-directories-first'
 
   # alias tree='eza --tree --icons --level=2'
-  source "$HOME/miniscandal/profile/src/bash/scripts/functions/tree.sh"
+  source "$HOME/miniscandal/profile/src/bash/functions/tree.sh"
 fi
 
 alias scb='xclip -selection clipboard'
 alias ask="~/miniscandal/projects/ollama-scripts/src/ask/main.sh"
 alias render="~/miniscandal/projects/ollama-scripts/src/lib/render.pl"
+alias ollama="~/miniscandal/projects/ollama-scripts/src/ensure-server/main.sh"

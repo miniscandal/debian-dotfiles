@@ -27,12 +27,10 @@ printf "\033[?25h"
 
 # Aliases
 if type -q eza
-    # Redefining ls allows standard flags (-a, -l) to be passed to eza
     alias ls='eza --icons --group-directories-first'
 
-    # Provides a tree view limited to 2 levels
-    alias tree='eza --tree --icons --level=2'
-else
-    # Fallback: ensures 'ls' remains functional and colored
-    alias ls='ls --color=auto'
+    # alias tree='eza --tree --icons --level=2'
+    . "$HOME/miniscandal/profile/src/fish/functions/tree.fish"
 end
+
+alias scb='xclip -selection clipboard'
