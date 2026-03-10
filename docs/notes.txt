@@ -1,20 +1,24 @@
-Rutas de los temas de oh my posh en linux y windows:
+Oh My Posh Theme Paths:
 ~/.cache/oh-my-posh/themes/M365Princess.omp.json
 $env:LOCALAPPDATA\Programs\oh-my-posh\themes
 
 
 Add in Microsoft.PowerShell_profile file: 
 . "\\wsl$\Debian\home\ifeye\miniscandal\profile\src\powershell\main.ps1"
+Add in PowerShell Microsoft.PowerShell_profile.ps1 Debian wsl
+~/miniscandal/profile/src/powershell/main.ps1
+ Add in Microsoft.VSCode_profile.ps1
+ ~/miniscandal/profile/src/powershell/main.ps1
 
 
 Add in .profile or .bashrc linux 
-source ~/miniscandal/profile/src/main.sh
+source ~/miniscandal/profile/src/bash/main.sh
 
 
 Add in config.fish linux
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    source ~/miniscandal/profile/src/fish/main.fish
-    # Si no reconoce el comando code
+    . ~/miniscandal/profile/src/fish/main.fish
+    # Add VS Code to PATH to enable the 'code' command within WSL
     fish_add_path "/mnt/c/Users/histo/AppData/Local/Programs/Microsoft VS Code/bin"
 end
